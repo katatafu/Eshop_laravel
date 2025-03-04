@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');  // Sloupec pro jméno
+            $table->string('email')->unique();  // Sloupec pro email, s unikátními hodnotami
+            $table->string('adress');  // Sloupec pro adresu
+            $table->string('phoneNumber');  // Sloupec pro telefonní číslo
+            $table->decimal('discount', 5, 2)->nullable();  // Sloupec pro slevu (volitelný, formát: číslo s 2 desetinnými místy)
+            $table->timestamps();  // Sloupce created_at a updated_at
         });
     }
 
