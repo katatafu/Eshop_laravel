@@ -33,10 +33,16 @@ class ReviewResource extends Resource
                     ->relationship('product', 'name') // Předpokládám, že máte vztah s modelem Product
                     ->required(),
 
-                Forms\Components\Rating::make('rating')
-                    ->label('Hodnocení') // Hodnocení od 1-5
-                    ->required(),
-
+                    Forms\Components\Select::make('rating')
+                    ->label('Hodnocení')
+                    ->options([
+                        1 => '⭐',
+                        2 => '⭐⭐',
+                        3 => '⭐⭐⭐',
+                        4 => '⭐⭐⭐⭐',
+                        5 => '⭐⭐⭐⭐⭐',
+                    ])
+                    ->required(),                
                 Forms\Components\Textarea::make('comment')
                     ->label('Komentář')
                     ->required(),
