@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+    @font-face {
+        font-family: Nunito;
+        src: url("/public/fonts/Nunito/Nunito-Regular.ttf") format ("ttf");
+        color: aquamarine;
+    }
+    @font-face {
+        font-family: Nunito-Light;
+        src: url("/public/fonts/Nunito/Nunito-Light.ttf") format ("ttf");
+    }
+    @font-face {
+        font-family: Bebas Neue;
+        src: url("/public/fonts/Bebas Neue/BebasNeue-Regular.ttf") format ("ttf");
+    }
+}

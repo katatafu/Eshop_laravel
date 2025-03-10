@@ -23,7 +23,7 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            font-family: 'Arial', sans-serif;
+            font-family: 'nunito', sans-serif;
             overflow: auto; /* Allow scrolling */
         }
         .layout-wrapper {
