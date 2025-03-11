@@ -42,21 +42,19 @@ class ProductResource extends Resource
                 ->label('Price')
                 ->required()
                 ->numeric()
-                ->min(0)
                 ->step(0.01)
                 ->helperText('Enter the product price'),
 
                 // Formulář pro SKU (Stock Keeping Unit)
-                Forms\Components\TextInput::make('sku')
+                /*Forms\Components\TextInput::make('sku')
                     ->label('SKU')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255),*/
 
                 // Formulář pro dostupnost na skladě
-                Forms\Components\Toggle::make('in_stock')
+                Forms\Components\TextInput::make('in_stock')
                     ->label('In Stock')
-                    ->required()
-                    ->default(true), // Přednastavíme na "true", že je produkt skladem
+                    ->required(),
             ]);
     }
 
