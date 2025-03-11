@@ -46,15 +46,51 @@ class ProductResource extends Resource
                 ->helperText('Enter the product price'),
 
                 // Formulář pro SKU (Stock Keeping Unit)
-                /*Forms\Components\TextInput::make('sku')
+                Forms\Components\TextInput::make('sku')
                     ->label('SKU')
                     ->required()
-                    ->maxLength(255),*/
+                    ->maxLength(255),
 
                 // Formulář pro dostupnost na skladě
                 Forms\Components\TextInput::make('in_stock')
                     ->label('In Stock')
                     ->required(),
+                    Forms\Components\FileUpload::make('image')
+                    ->label('Image')
+                    ->image()
+                    ->directory('gallery') // Určuje složku pro ukládání souboru
+                    ->maxSize(5120) // Maximální velikost souboru (5MB)
+                    ->required()
+                    ->helperText('Upload an image for the gallery')
+                    ->disk('public')
+                    ->columnSpan('full')
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        // Pokud je obrázek nahrán, automaticky vyplníme ostatní pole
+                        if ($state) {
+                            $file = $state; // Obrázek, který byl nahrán
+                            $set('file_name', $file->getClientOriginalName());
+                            $set('file_size', $file->getSize());
+                            $set('file_format', $file->getClientOriginalExtension());
+                        }
+                    }),
+
+                // Další pole pro file_name, file_size a file_format, která se vyplní automaticky
+                Forms\Components\TextInput::make('file_name')
+                    ->label('File Name')
+                    ->disabled() // Pole bude automaticky vyplněno
+                    ->default(fn ($get) => $get('image') ? $get('image')->getClientOriginalName() : null),
+
+                Forms\Components\TextInput::make('file_size')
+                    ->label('File Size')
+                    ->disabled() // Pole bude automaticky vyplněno
+                    ->default(fn ($get) => $get('image') ? $get('image')->getSize() : null),
+
+                Forms\Components\TextInput::make('file_format')
+                    ->label('File Format')
+                    ->disabled() // Pole bude automaticky vyplněno
+                    ->default(fn ($get) => $get('image') ? $get('image')->getClientOriginalExtension() : null),
+         
+            
             ]);
     }
 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('sku')->unique(); // Přidání sloupce pro SKU, jedinečný identifikátor
             $table->integer('in_stock'); // Přidání sloupce pro množství na skladě
             $table->timestamps(); // Automatické sloupce created_at a updated_at
+            $table->string('image')->nullable(); // Add the image column
         });
     }
 
