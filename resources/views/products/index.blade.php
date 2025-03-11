@@ -55,16 +55,20 @@
 
     <div class="product-grid">
         @foreach($products as $product)
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300" alt="{{ $product->name }}">
-                <div class="p-4">
-                    <h2 class="text-xl font-semibold mb-2 text-center">{{ $product->name }}</h2>
-                    <p class="text-gray-600 mb-4 product-description">{{ $product->description }}</p>
-                    <p class="font-bold text-lg text-blue-600 mb-4 text-center">Cena: {{ $product->price }} Kč</p>
-                    <a href="{{ route('products.show', $product->id) }}" class="btn-primary">Zobrazit detaily</a>
-                </div>
+        <div class="product-card">
+            <!-- Zobrazit skutečný obrázek z úložiště -->
+            <img src="{{ asset('storage/gallery/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
+
+            <div class="p-4">
+                <h2 class="text-xl font-semibold mb-2 text-center">{{ $product->name }}</h2>
+                <p class="text-gray-600 mb-4 product-description">{{ $product->description }}</p>
+                <p class="font-bold text-lg text-blue-600 mb-4 text-center">Cena: {{ $product->price }} Kč</p>
+                <a href="{{ route('products.show', $product->id) }}" class="btn-primary">Zobrazit detaily</a>
             </div>
-        @endforeach
+        </div>
+    @endforeach
+
+
     </div>
 </div>
 @endsection
