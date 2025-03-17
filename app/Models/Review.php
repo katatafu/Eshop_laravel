@@ -7,21 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     protected $fillable = [
-        'customer_id',  // vztah k zákazníkovi
-        'product_id',   // vztah k produktu
-        'rating',       // hodnocení (např. 1-5 hvězdiček)
-        'comment',      // komentář k recenzi
+        'user_id',   // Opraveno z users_id
+        'product_id',
+        'rating',
+        'comment',
     ];
 
-    // Vztah: recenze patří k jednomu zákazníkovi
-    public function customer()
+    // Vztah: recenze patří k jednomu uživateli (users)
+    public function user()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(User::class);
     }
 
     // Vztah: recenze patří k jednomu produktu
     public function product()
     {
-        return $this->belongsTo(Product::class);  // Model Product musíte mít také
+        return $this->belongsTo(Product::class);
     }
 }

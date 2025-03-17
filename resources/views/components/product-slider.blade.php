@@ -7,10 +7,17 @@
                 <div class="flex-shrink-0 w-64">
                     <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col justify-between h-full">
                         <div>
-                            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="object-cover w-full h-48">
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="object-cover w-full h-48">
                             <div class="p-4">
                                 <h3 class="text-lg font-bold">{{ $product->name }}</h3>
                                 <p class="mt-2 text-gray-600">{{ $product->description }}</p>
+                                <p>
+                                    Hodnocení:
+                                    <strong>
+                                    {{ number_format($product->averageRating(), 1) }} ⭐
+                                    </strong>
+                                    <span class="text-gray-400">({{ $product->reviews->count() }}x)</span>
+                                </p>
                                 <p class="mt-4 text-xl font-bold">{{ number_format($product->price, 2) }} Kč</p>
                             </div>
                         </div>

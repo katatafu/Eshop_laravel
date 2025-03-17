@@ -29,4 +29,7 @@ Route::get('/products', [ProductController::class, 'index'])->name('products.ind
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::get('products/search', [ProductController::class, 'search'])->name('products.search');
 
+use App\Http\Controllers\ReviewController;
+Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store')->middleware('auth');
+
 require __DIR__.'/auth.php';

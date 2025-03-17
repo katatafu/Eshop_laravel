@@ -14,4 +14,14 @@ class Product extends Model
     protected $fillable = [
         'name','image', 'description', 'price', 'sku', 'in_stock'
     ];
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function averageRating()
+    {
+        return $this->reviews()->avg('rating') ?? 0;
+    }
+
 }
