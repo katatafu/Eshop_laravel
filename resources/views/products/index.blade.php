@@ -73,7 +73,7 @@
                 <a href="{{ route('products.show', $product->id) }}" class="btn-primary">Zobrazit detaily</a>
             </div>
         </div>
-    @endforeach
+    @endforeach02
 
 
     </div>
