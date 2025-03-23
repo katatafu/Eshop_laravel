@@ -7,7 +7,8 @@
                 <div class="flex-shrink-0 w-64">
                     <div class="bg-white shadow-md rounded-lg overflow-hidden flex flex-col justify-between h-full">
                         <div>
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="object-cover w-full h-48">
+                        <img id="main-image" src="{{ asset('storage/' . $product->images[0]) }}"
+                        alt="{{ $product->name }}" class="object-cover w-full h-48">
                             <div class="p-4">
                                 <h3 class="text-lg font-bold">{{ $product->name }}</h3>
                                 <p class="mt-2 text-gray-600">{{ $product->description }}</p>

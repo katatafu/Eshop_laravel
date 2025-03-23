@@ -57,7 +57,8 @@
         @foreach($products as $product)
         <div class="product-card">
             <!-- Zobrazit skutečný obrázek z úložiště -->
-            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
+            <img id="main-image" src="{{ asset('storage/' . $product->images[0]) }}"
+            alt="{{ $product->name }}" class="product-image">
 
             <div class="p-4">
                 <h2 class="text-xl font-semibold mb-2 text-center">{{ $product->name }}</h2>
@@ -73,7 +74,7 @@
                 <a href="{{ route('products.show', $product->id) }}" class="btn-primary">Zobrazit detaily</a>
             </div>
         </div>
-    @endforeach02
+    @endforeach
 
 
     </div>

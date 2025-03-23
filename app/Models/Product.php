@@ -9,16 +9,16 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'description', 'price', 'sku', 'in_stock'
+        'name', 'description', 'price', 'sku', 'in_stock', 'images'
+    ];
+    
+    protected $casts = [
+        'images' => 'array', // Automatická konverze JSON na PHP pole
     ];
 
     /**
      * Define the relationship between Product and ProductImage.
      */
-    public function images()
-    {
-        return $this->hasMany(ProductImage::class);
-    }
 
     public function reviews()
     {
